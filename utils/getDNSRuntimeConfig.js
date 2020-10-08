@@ -1,3 +1,4 @@
+const os=require("os");
 const path = require("path");
 
 module.exports = async (configFilePath) => {
@@ -8,7 +9,7 @@ module.exports = async (configFilePath) => {
     return require(configResolve);
   };
   const configResolve = require.resolve("./dns.config", {
-    paths: [process.cwd(), path.resolve(__dirname, "../configs/")]
+    paths: [process.cwd(),os.homedir(), path.resolve(__dirname, "../configs/")]
   });
   return require(configResolve);
 };
